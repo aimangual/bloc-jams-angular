@@ -2,8 +2,7 @@
     function SongPlayer() {
         var SongPlayer = {};
         var currentSong = null;
-        var currentBuzzObject = null;
-        
+        var currentBuzzObject = null
         
         /**
         * @function setSong
@@ -16,45 +15,56 @@
                 currentSong.playing = null;
             }
             
-            /**
-            * @desc Buzz object audio file
-            * @type {Object}
-            */
             currentBuzzObject = new buzz.sound(song.audioUrl, {
                 formats: ['mp3'],
                 preload: true
             });
- 
+            
             currentSong = song;
         };
         
+        /**
+        * @function SongPlayer.play
+        * @desc Plays current song if paused, or selected song
+        * @param {Object} song
+        */
         SongPlayer.play = function(song) {
             if (currentSong !== song) {
+                
                 setSong(song);
-                currentBuzzObject.play();
-                song.playing = true;
-            } elseif (currentSong === song) {
+                playSong(song);
+                
+            } else if (currentSong === song) {
                 if (currentBuzzObject.isPaused()) {
-                    currentBuzzObject.play();
+                    playSong(song);
                 }
             }
         };
-
-                
+        
+        /**
+        * @function playSong
+        * @desc Plays current song and sets the playing property of the song object to true
+        * @param {Object} song
+        */
+        var playSong = function(song) {
+            currentBuzzObject.play();
+            song.playing = true;
+        };
+        
+        /**
+        * @function SongPlayer.pause
+        * @desc Pauses current song
+        * @param {Object} song
+        */
         SongPlayer.pause = function(song) {
             currentBuzzObject.pause();
             song.playing = false;
         };
-
-        currentSong = song;
-
-        }
-    };
-         
-    return SongPlayer;
-}
- 
+        
+        return SongPlayer;
+    }
+    
     angular
         .module('blocJams')
         .factory('SongPlayer', SongPlayer);
- })();
+})();
