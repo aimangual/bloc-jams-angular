@@ -1,5 +1,6 @@
  (function() {
      function Fixtures() {
+         
          var Fixtures = {};
          
          var albumPicasso = {

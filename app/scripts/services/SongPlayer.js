@@ -12,7 +12,7 @@
         * @desc Buzz object audio file
         * @type {Object}
         */
-        var currentBuzzObject = null
+        var currentBuzzObject = null;
         
         /**
         * @function setSong
@@ -85,7 +85,7 @@
         * @desc Current volume (scale 0-100)
         * @type {Number}
         */
-        SongPlayer.volume = null;
+        SongPlayer.volume = 60;
         
         /**
         * @function play
@@ -95,10 +95,8 @@
         SongPlayer.play = function(song) {
             song = song || SongPlayer.currentSong;
             if (SongPlayer.currentSong !== song) {
-                
                 setSong(song);
                 playSong(song);
-                
             } else if (SongPlayer.currentSong === song) {
                 if (currentBuzzObject.isPaused()) {
                     playSong(song);
@@ -124,6 +122,7 @@
         SongPlayer.previous = function() {
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex--;
+            
             if (currentSongIndex < 0) {
                 stopSong(SongPlayer.currentSong);
             } else {
@@ -140,6 +139,9 @@
         SongPlayer.next = function() {
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex++;
+            
+            var lastSongIndex = currentAlbum.songs.length - 1;
+            
             if (currentSongIndex > currentAlbum.songs.length) {
                 stopSong(SongPlayer.currentSong);
             } else {

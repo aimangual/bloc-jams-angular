@@ -1,11 +1,14 @@
 (function() {
     function timecode() {
         return function(seconds) {
+            
             var seconds = Number.parseFloat(seconds);
+            
             if (Number.isNaN(seconds)) {
                 return '-:--';
             }
-            var wholeSeconds = Math.floo(seconds);
+            
+            var wholeSeconds = Math.floor(seconds);
             var minutes = Math.floor(wholeSeconds / 60);
             var remainingSeconds = wholeSeconds % 60;
             
@@ -19,7 +22,7 @@
             
             return output;
         };
-    }
+    };
  
     angular
         .module('blocJams')
