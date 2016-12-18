@@ -140,9 +140,9 @@
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex++;
             
-            var lastSongIndex = currentAlbum.songs.length - 1;
+            var lastSongIndex = currentAlbum.songs.duration - 1;
             
-            if (currentSongIndex > currentAlbum.songs.length) {
+            if (currentSongIndex > currentAlbum.songs.duration) {
                 stopSong(SongPlayer.currentSong);
             } else {
                 var song = currentAlbum.songs[currentSongIndex];
