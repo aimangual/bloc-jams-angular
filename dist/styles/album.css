@@ -37,11 +37,16 @@ body.album {
     font-size: 0.75rem;
 }
 
+.container .narrow {
+    max-width: 56rem;
+}
+
 .album-view-song-list {
     width: 90%;
     margin: 1.5rem auto;
     font-weight: 300;
     font-size: 0.75em;
+    border-collapse: collapse;
 }
 
 .album-view-song-item {
@@ -50,6 +55,7 @@ body.album {
 }
 
 .song-item-number {
+    text-align: center;
     width: 5%;
     min-width: 30px;
 }
@@ -81,10 +87,6 @@ body.album {
 
 .album-song-button span {
     line-height: 28px;
-}
-
-.album-song-button .fa-play {
-    padding-left: 5px;
 }
 
 @media (max-width: 40rem) and (min-width: 20rem) {
